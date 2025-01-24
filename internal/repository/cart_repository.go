@@ -27,9 +27,11 @@ func (r *cartRepository) AddToCart(cart *models.Cart) error {
 
 func (r *cartRepository) GetCartByUserID(userID int) ([]models.Cart, error) {
     var cartItems []models.Cart
+    // Preload для загрузки связанных данных (Product)
     err := r.db.Preload("Product").Where("user_id = ?", userID).Find(&cartItems).Error
     return cartItems, err
 }
+
 
 func (r *cartRepository) UpdateCartItem(cartID int, quantity int) error {
     return r.db.Model(&models.Cart{}).Where("id = ?", cartID).Update("quantity", quantity).Error
