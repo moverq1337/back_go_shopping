@@ -15,15 +15,21 @@ func main() {
     db, err := database.ConnectDB(cfg)
     if err != nil {
         log.Fatalf("Не удалось подключиться к базе данных: %v", err)
-    } else {
-        log.Println("Успешно подключено к базе данных")
     }
 
+    // Создаем репозитории
     productRepo := repository.NewProductRepository(db)
+    userRepo := repository.NewUserRepository(db)
+    cartRepo := repository.NewCartRepository(db)
+
     productHandler := handlers.NewProductHandler(productRepo)
+    authHandler := handlers.NewAuthHandler(userRepo)
+    cartHandler := handlers.NewCartHandler(cartRepo)
 
-    r := router.SetupRouter(productHandler)
+    // Настройка маршрутов
+    r := router.SetupRouter(productHandler, authHandler, cartHandler)
 
+    // Запуск сервера
     if err := r.Run(":" + cfg.ServerPort); err != nil {
         log.Fatalf("Не удалось запустить сервер: %v", err)
     }

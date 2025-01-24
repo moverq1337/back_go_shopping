@@ -1,0 +1,148 @@
+{
+	"_type": "export",
+	"__export_format": 4,
+	"__export_date": "2025-01-24T00:00:00.000Z",
+	"__export_source": "insomnia.desktop.app:v2023.1.0",
+	"resources": [
+		{
+			"_id": "req_1",
+			"parentId": "wrk_1",
+			"name": "Register",
+			"description": "",
+			"method": "POST",
+			"url": "http://localhost:8080/api/auth/register",
+			"headers": [{ "name": "Content-Type", "value": "application/json" }],
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n  \"email\": \"test@example.com\",\n  \"username\": \"testuser\",\n  \"password\": \"password123\"\n}"
+			}
+		},
+		{
+			"_id": "req_2",
+			"parentId": "wrk_1",
+			"name": "Login",
+			"description": "",
+			"method": "POST",
+			"url": "http://localhost:8080/api/auth/login",
+			"headers": [{ "name": "Content-Type", "value": "application/json" }],
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+			}
+		},
+		{
+			"_id": "req_3",
+			"parentId": "wrk_1",
+			"name": "Get All Products",
+			"description": "",
+			"method": "GET",
+			"url": "http://localhost:8080/api/products",
+			"headers": []
+		},
+		{
+			"_id": "req_4",
+			"parentId": "wrk_1",
+			"name": "Get Product by ID",
+			"description": "",
+			"method": "GET",
+			"url": "http://localhost:8080/api/products/:id",
+			"headers": [],
+			"parameters": [{ "name": "id", "value": "1" }]
+		},
+		{
+			"_id": "req_5",
+			"parentId": "wrk_1",
+			"name": "Add to Cart",
+			"description": "",
+			"method": "POST",
+			"url": "http://localhost:8080/api/cart",
+			"headers": [
+				{ "name": "Authorization", "value": "Bearer <your_token>" },
+				{ "name": "Content-Type", "value": "application/json" }
+			],
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n  \"productId\": 1,\n  \"quantity\": 2\n}"
+			}
+		},
+		{
+			"_id": "req_6",
+			"parentId": "wrk_1",
+			"name": "Get Cart",
+			"description": "",
+			"method": "GET",
+			"url": "http://localhost:8080/api/cart",
+			"headers": [{ "name": "Authorization", "value": "Bearer <your_token>" }]
+		},
+		{
+			"_id": "req_7",
+			"parentId": "wrk_1",
+			"name": "Update Cart Item",
+			"description": "",
+			"method": "PUT",
+			"url": "http://localhost:8080/api/cart/:id",
+			"headers": [
+				{ "name": "Authorization", "value": "Bearer <your_token>" },
+				{ "name": "Content-Type", "value": "application/json" }
+			],
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n  \"quantity\": 3\n}"
+			},
+			"parameters": [{ "name": "id", "value": "1" }]
+		},
+		{
+			"_id": "req_8",
+			"parentId": "wrk_1",
+			"name": "Remove from Cart",
+			"description": "",
+			"method": "DELETE",
+			"url": "http://localhost:8080/api/cart/:id",
+			"headers": [{ "name": "Authorization", "value": "Bearer <your_token>" }],
+			"parameters": [{ "name": "id", "value": "1" }]
+		},
+		{
+			"_id": "req_9",
+			"parentId": "wrk_1",
+			"name": "Create Product (Admin)",
+			"description": "",
+			"method": "POST",
+			"url": "http://localhost:8080/api/admin/products",
+			"headers": [
+				{ "name": "Authorization", "value": "Bearer <admin_token>" },
+				{ "name": "Content-Type", "value": "application/json" }
+			],
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n  \"name\": \"New Product\",\n  \"description\": \"Description\",\n  \"imageUrl\": \"http://example.com/image.jpg\",\n  \"sex\": true,\n  \"isNew\": true,\n  \"price\": 99.99\n}"
+			}
+		},
+		{
+			"_id": "req_10",
+			"parentId": "wrk_1",
+			"name": "Update Product (Admin)",
+			"description": "",
+			"method": "PUT",
+			"url": "http://localhost:8080/api/admin/products/:id",
+			"headers": [
+				{ "name": "Authorization", "value": "Bearer <admin_token>" },
+				{ "name": "Content-Type", "value": "application/json" }
+			],
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n  \"name\": \"Updated Product\",\n  \"description\": \"Updated Description\",\n  \"imageUrl\": \"http://example.com/image.jpg\",\n  \"sex\": false,\n  \"isNew\": false,\n  \"price\": 199.99\n}"
+			},
+			"parameters": [{ "name": "id", "value": "1" }]
+		},
+		{
+			"_id": "req_11",
+			"parentId": "wrk_1",
+			"name": "Delete Product (Admin)",
+			"description": "",
+			"method": "DELETE",
+			"url": "http://localhost:8080/api/admin/products/:id",
+			"headers": [{ "name": "Authorization", "value": "Bearer <admin_token>" }],
+			"parameters": [{ "name": "id", "value": "1" }]
+		}
+	]
+}
